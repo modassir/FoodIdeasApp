@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+ 
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Food Ideas App</title>
+</head>
+ 
+<body>
+ 
+  <div class="container">
+    <div>
+      <span style="display:{{ dispLogin }};"><a href="#/login"><button class="btn btn-lg btn-success">Login</button></a></span>
+      <span style="display:{{ dispSignup }};"><a href="#/signup"><button class="btn btn-lg btn-warning">Signup</button></a></span>
+      <span style="display:{{ dispLogout }};"><button ng-click="logout()" class="btn btn-lg btn-danger" type="button" class="btn btn-success">Logout</button></span>
+    </div>
+    
+    <h1 style="text-align:center;">Food Ideas App</h1>
+    <form class="form-signin" role="form">
+      <input ng-model="ideaTitle" id="title" class="form-control" placeholder="Enter Idea Title" required=""></br>
+      <textarea ng-model="foodIdea" id="foodIdeaInput" class="form-control" rows="6" placeholder="Please Write your Food Idea Here..." required=""></textarea></br>
+      <button ng-click="addFoodIdea()" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>
+    </form>
+    <blockquote ng-repeat="idea in ideas | orderBy:item.timestamp">
+      <!-- <a href="" ng-href="#/idea/{{ name }}"><p ng-bind="idea.title"></p></a> -->
+      <a href="" ng-href="#/idea/{{ idea.$id }}"><p ng-bind="idea.title"></p></a>
+      <p ng-bind="idea.text"></p>
+      <p>
+        <span style="color:#5cb85c;">{{ idea.upvotes }} Upvotes</span>
+        <span style="color:#d9534f;">{{ idea.downvotes }} Downvotes</span>
+      </p>
+      <footer>{{ idea.user.name }} at {{ idea.timestamp | date:'HH:mma dd-MMM' }}</footer>
+    </blockquote>
+  </div>
+
+</body>
+</html>

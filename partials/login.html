@@ -1,0 +1,12 @@
+<div class="container">
+  <span><a href="#/home"><button class="btn btn-lg btn-primary">Home</button></a></span>
+  <span><a href="#/signup"><button class="btn btn-lg btn-warning">Signup</button></a></span>
+</div>
+<div class="jumbotron" style="padding-bottom:0px; text-align:center;">
+  <h2>Login</h2>
+</div>
+<form class="form-signin" role="form">
+  <input type="email" ng-model="email" class="form-control" placeholder="Email address" required="" autofocus="">
+  <input type="password" ng-model="password" class="form-control" placeholder="Password" required="">
+  <button ng-click="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+</form>

@@ -1,0 +1,43 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>{{ idea_title }} | Food Idea App</title>
+</head>
+ 
+<body>
+ 
+  <div class="container">
+    <div>
+      <span><a href="#/home"><button class="btn btn-lg btn-primary">Home</button></a></span>
+      <span style="display:{{ dispLogin }};"><a href="#/login"><button class="btn btn-lg btn-success">Login</button></a></span>
+      <span style="display:{{ dispSignup }};"><a href="#/signup"><button class="btn btn-lg btn-warning">Signup</button></a></span>
+      <span style="display:{{ dispLogout }};"><button ng-click="logout()" class="btn btn-lg btn-danger" type="button" class="btn btn-success">Logout</button></span>
+    </div>
+    
+    <div></br>
+      <h3 ng-bind="idea_title"></h3>
+      <p ng-bind="idea_text"></p>
+      <p>
+        <span style="color:#5cb85c;">{{ idea_upvotes }}</span>
+        <span><button ng-click="upvote()" class="btn btn-success">Upvote</button></span>
+        <span style="color:#d9534f;">{{ idea_downvotes }}</span>
+        <span><button ng-click="downvote()" class="btn btn-danger">Downvote</button></span>
+      </p>
+      <small>{{ idea_user_name }} at {{ idea_timestamp }}</small>
+      <h4>Comments:</h4>
+      <form class="form-inline">
+        <div class="form-group">
+          <input ng-model="comment" type="text" class="form-control" id="inputComment" placeholder="Write a Comment...">
+        </div>
+        <button ng-click="postComment()" type="submit" class="btn btn-default">Post</button>
+      </form>
+    </div>
+    <div></br>
+      <div ng-repeat="comment in comments | orderBy:comment.timestamp">
+        <h4 ng-bind="comment.user.name"></h4>
+        <p ng-bind="comment.text"></p>
+        <small>{{ comment.timestamp | date:'HH:mma dd-MMM' }}</small>
+      </div>
+    </div>
+  </div>
+
+</body>

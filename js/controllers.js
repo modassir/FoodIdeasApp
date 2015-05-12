@@ -16,14 +16,15 @@ myAppControllers.controller('HomeCtrl', [
         $scope.dispLogin = "none";
         $scope.dispSignup = "none";
         $scope.dispLogout = "";
-
+        $scope.dispName = "";
+        var userInfoRef = new Firebase("https://foodideas.firebaseio.com/users/" + authData.uid);
+        var userInfo;
+        userInfoRef.on("value", function(data) {
+          userInfo = data.val();
+          $scope.user_name = userInfo.name;
+          console.log(userInfo);
+        });
         $scope.addFoodIdea = function() {
-          var userInfoRef = new Firebase("https://foodideas.firebaseio.com/users/" + authData.uid);
-          var userInfo;
-          userInfoRef.once("value", function(data) {
-            userInfo = data.val();
-            console.log(userInfo);
-          });
           if($scope.foodIdea && $scope.ideaTitle) {
             var newIdeaRef = $scope.ideas.$add({              
               title: $scope.ideaTitle,
@@ -55,6 +56,7 @@ myAppControllers.controller('HomeCtrl', [
         $scope.dispLogin = "";
         $scope.dispSignup = "";
         $scope.dispLogout = "none";
+        $scope.dispName = "none";
 
         $scope.addFoodIdea = function() {
           alert("Please login before posting your idea.");
@@ -103,7 +105,15 @@ myAppControllers.controller('IdeaCtrl', [
         $scope.dispLogin = "none";
         $scope.dispSignup = "none";
         $scope.dispLogout = "";
-        
+        $scope.dispName = "";
+
+        var userCommentRef = new Firebase("https://foodideas.firebaseio.com/users/" + authData.uid);
+        var userInfo;
+        userCommentRef.on("value", function(data) {
+          userInfo = data.val();
+          $scope.user_name = userInfo.name;
+        });
+
         $scope.upvote = function() {
           // Increment Upvotes by 1.
           var ideaUpvoteRef = new Firebase("https://foodideas.firebaseio.com/ideas/" + $scope.ideaId + "/upvotes");
@@ -125,11 +135,6 @@ myAppControllers.controller('IdeaCtrl', [
         }
 
         $scope.postComment = function() {
-          var userCommentRef = new Firebase("https://foodideas.firebaseio.com/users/" + authData.uid);
-          var userInfo;
-          userCommentRef.once("value", function(data) {
-            userInfo = data.val();
-          });
           var newCommentRef = $scope.comments.$add({
             text: $scope.comment,
             timestamp: Firebase.ServerValue.TIMESTAMP,
@@ -152,6 +157,8 @@ myAppControllers.controller('IdeaCtrl', [
         $scope.dispLogin = "";
         $scope.dispSignup = "";
         $scope.dispLogout = "none";
+        $scope.dispName = "none";
+
         $scope.upvote = function() {
           alert("Please login before voting/downvoting!");
         }

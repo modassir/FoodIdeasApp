@@ -36,7 +36,7 @@
       <div ng-repeat="comment in comments | orderBy:'timestamp'">
         <h4 ng-bind="comment.user.name"></h4>
         <p ng-bind="comment.text"></p>
-        <small>{{ comment.timestamp | date:'h:mma dd-MMM' }}</small>
+        <small>{{ comment.timestamp | date:'MMM-dd at h:mma' }}</small>
       </div>
     </div>
   </div>

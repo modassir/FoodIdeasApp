@@ -33,7 +33,7 @@
       </form>
     </div>
     <div></br>
-      <div ng-repeat="comment in comments | orderBy:comment.timestamp">
+      <div ng-repeat="comment in comments | orderBy:'timestamp'">
         <h4 ng-bind="comment.user.name"></h4>
         <p ng-bind="comment.text"></p>
         <small>{{ comment.timestamp | date:'h:mma dd-MMM' }}</small>

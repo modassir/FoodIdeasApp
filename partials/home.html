@@ -24,7 +24,7 @@
       <textarea ng-model="foodIdea" id="foodIdeaInput" class="form-control" rows="6" placeholder="Please Write your Food Idea Here..." required=""></textarea></br>
       <button ng-click="addFoodIdea()" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>
     </form>
-    <blockquote ng-repeat="idea in ideas | orderBy:-timestamp | filter:query">
+    <blockquote ng-repeat="idea in ideas | orderBy:timestamp | filter:query">
       <!-- <a href="" ng-href="#/idea/{{ name }}"><p ng-bind="idea.title"></p></a> -->
       <a href="" ng-href="#/idea/{{ idea.$id }}"><p ng-bind="idea.title"></p></a>
       <p ng-bind="idea.text"></p>

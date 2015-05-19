@@ -23,7 +23,7 @@
         <span style="color:#d9534f;">{{ idea_downvotes }}</span>
         <span><button ng-click="downvote()" class="btn btn-danger">Downvote</button></span>
       </p>
-      <small>{{ idea_user_name }} at {{ idea_timestamp }}</small>
+      <small>{{ idea_user_name }} at {{ idea_timestamp | date:'h:mma MMM-dd' }}</small>
       <h4>Comments:</h4>
       <form class="form-inline">
         <div class="form-group">
@@ -36,7 +36,7 @@
       <div ng-repeat="comment in comments | orderBy:'timestamp'">
         <h4 ng-bind="comment.user.name"></h4>
         <p ng-bind="comment.text"></p>
-        <small>{{ comment.timestamp | date:'MMM-dd h:mma' }}</small>
+        <small>{{ comment.timestamp | date:'h:mma MMM-dd' }}</small>
       </div>
     </div>
   </div>

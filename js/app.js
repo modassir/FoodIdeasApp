@@ -1,10 +1,10 @@
 var myApp =  angular.module('myApp', [
     'ngRoute',
     'firebase',
-    'myAppControllers'    
+    'myAppControllers'
 ]);
 
-myApp.config(['$routeProvider', function($routeProvider) {
+myApp.config(['$routeProvider', '$locationProvider',  function($routeProvider, $locationProvider) {
   "use strict";  
 
   $routeProvider
@@ -28,5 +28,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     .otherwise({
       redirectTo: '/home'
     });
+
+    $locationProvider.html5Mode(true);
   }
 ]);

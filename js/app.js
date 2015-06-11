@@ -8,19 +8,19 @@ myApp.config(['$routeProvider', '$locationProvider',  function($routeProvider, $
   "use strict";  
 
   $routeProvider
-    .when('/home', {
+    .when('home', {
       templateUrl: 'partials/home.html',
       controller: 'HomeCtrl'
     })
-    .when('/signup', {
+    .when('signup', {
       templateUrl: 'partials/signup.html',
       controller: 'SignUpCtrl'
     })
-    .when('/login', {
+    .when('login', {
       templateUrl: 'partials/login.html',
       controller: 'LogInCtrl'
     })
-    .when('/idea/:ideaId', {
+    .when('idea/:ideaId', {
       templateUrl: 'partials/idea.html',
       controller: 'IdeaCtrl'
     })

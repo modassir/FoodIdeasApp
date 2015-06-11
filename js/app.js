@@ -26,7 +26,7 @@ myApp.config(['$routeProvider', '$locationProvider',  function($routeProvider, $
     })
     // Set defualt view of our app to home  
     .otherwise({
-      redirectTo: '/home'
+      redirectTo: 'home'
     });
 
     $locationProvider.html5Mode(true);

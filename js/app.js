@@ -8,27 +8,27 @@ myApp.config(['$routeProvider', '$locationProvider',  function($routeProvider, $
   "use strict";  
 
   $routeProvider
-    .when('/FoodIdeasApp/home', {
+    .when('/home', {
       templateUrl: 'partials/home.html',
       controller: 'HomeCtrl'
     })
-    .when('/FoodIdeasApp/signup', {
+    .when('/signup', {
       templateUrl: 'partials/signup.html',
       controller: 'SignUpCtrl'
     })
-    .when('/FoodIdeasApp/login', {
+    .when('/login', {
       templateUrl: 'partials/login.html',
       controller: 'LogInCtrl'
     })
-    .when('/FoodIdeasApp/idea/:ideaId', {
+    .when('/idea/:ideaId', {
       templateUrl: 'partials/idea.html',
       controller: 'IdeaCtrl'
     })
     // Set defualt view of our app to home  
     .otherwise({
-      redirectTo: '/FoodIdeasApp/home'
+      redirectTo: '/home'
     });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   }
 ]);
